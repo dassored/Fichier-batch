@@ -1,0 +1,16 @@
+import psutil
+import os
+
+# Récupération des informations d'utilisation du disque dur
+total, used, free = psutil.disk_usage(os.getcwd())
+
+# Calcul du pourcentage d'utilisation du disque dur
+percentage_used = (used / total) * 100
+
+# Génération d'un rapport
+print("Rapport d'utilisation du disque dur :")
+print("===================================")
+print(f"Taille totale : {total / (1024 * 1024 * 1024):.2f} Go")
+print(f"Espace utilisé : {used / (1024 * 1024 * 1024):.2f} Go")
+print(f"Espace libre : {free / (1024 * 1024 * 1024):.2f} Go")
+print(f"Pourcentage d'utilisation : {percentage_used:.2f}%")
