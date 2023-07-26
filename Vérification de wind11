@@ -1,0 +1,39 @@
+@echo off
+
+REM Vérification des mises à jour Windows
+echo Vérification des mises à jour Windows
+echo -----------------------------
+echo
+wmic qfe get Caption,Description,HotFixID,InstalledOn | findstr /C:"KB"
+echo
+
+REM  Vérification des comptes d'utilisateurs
+echo Vérification des comptes d'utilisateurs...
+echo -----------------------------
+echo.
+net user
+echo.
+
+REM Vérification des ports ouverts
+echo Vérification des ports ouverts...
+echo -----------------------------
+echo.
+netstat -ano
+echo.
+
+REM Vérification des tâches planifiées
+echo érification des tâches planifiées...
+echo -----------------------------
+echo.
+schtasks /query /fo LIST
+echo
+
+REM Vérification des applications en cours d'exécution
+echo Vérification des applications en cours d'exécution...
+echo -----------------------------
+echo. 
+tasklist
+echo. 
+
+echo Audit de sécurité terminé.
+pause
