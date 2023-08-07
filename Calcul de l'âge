@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Demande à l'utilisateur de spécifier la date de naissance au format YYYY-MM-DD
+read -p "Entrez votre date de naissance (YYYY-MM-DD) : " birthdate
+
+# Convertit la date de naissance en timestamp
+birth_timestamp=$(date -d "$birthdate" +%s)
+
+# Calcule l'âge en fonction du timestamp actuel
+current_timestamp=$(date +%s)
+age_seconds=$((current_timestamp - birth_timestamp))
+age_years=$((age_seconds / 31536000))  # 1 an = 31536000 secondes
+
+# Affiche l'âge
+echo "Votre âge est d'environ $age_years ans."
