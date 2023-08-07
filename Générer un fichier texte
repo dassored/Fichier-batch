@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Demande à l'utilisateur de spécifier un répertoire
+read -p "Entrez le chemin du répertoire : " directory
+
+# Vérifie si le répertoire existe
+if [ -d "$directory" ]; then
+    # Génère la liste des fichiers et dossiers dans le répertoire
+    ls -l "$directory" > list.txt
+    echo "La liste des fichiers et dossiers a été enregistrée dans list.txt"
+else
+    echo "Le répertoire n'existe pas."
+fi
