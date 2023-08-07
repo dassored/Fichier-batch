@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Fonction pour vérifier si une règle existe
+check_rule() {
+    local table="$1"
+    local chain="$2"
+    local rule="$3"
+
+    if sudo iptables -t "$table" -C "$chain" $rule 2>/dev/null; then
+        echo "Règle trouvée dans la table $table, chaîne $chain : $rule"
+    else
+        echo "Règle non trouvée dans la table $table, chaîne $chain : $rule"
+    fi
+}
+
+# Vérification des règles IPv4
+check_rule "filter" "INPUT" "-p tcp --dport 22 -j ACCEPT"
+check_rule "filter" "INPUT" "-p tcp --dport 80 -j ACCEPT"
+# Ajoutez d'autres règles au besoin
+
+# Vérification des règles IPv6
+check_rule "filter" "INPUT" "-p tcp --dport 22 -j ACCEPT"
+check_rule "filter" "INPUT" "-p tcp --dport 80 -j ACCEPT"
+# Ajoutez d'autres règles au besoin
